@@ -13,13 +13,13 @@ import java.io.IOException;
 
 public class AuthenticationLoggingFilter extends HttpFilter {
 
-    private static Logger logger = LoggerFactory.getLogger(AuthenticationLoggingFilter.class);
+    private static final Logger logger = LoggerFactory.getLogger(AuthenticationLoggingFilter.class);
 
     @Override
     protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         var requestId = request.getHeader("Request-Id");
 
-        logger.info("Successfully authentication request with Id %s".formatted(requestId));
+        logger.info("Successful authentication request with Id %s".formatted(requestId));
 
         chain.doFilter(request, response);
 

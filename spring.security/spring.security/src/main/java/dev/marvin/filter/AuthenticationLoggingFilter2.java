@@ -2,7 +2,6 @@ package dev.marvin.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
@@ -31,7 +30,6 @@ public class AuthenticationLoggingFilter2 extends OncePerRequestFilter {
         var requestId = request.getHeader("Request-Id");
 
         logger.info("Successfully authentication request with Id %s".formatted(requestId));
-
         filterChain.doFilter(request, response);
     }
 }
