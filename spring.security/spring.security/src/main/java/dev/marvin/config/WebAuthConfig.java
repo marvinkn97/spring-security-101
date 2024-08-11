@@ -1,7 +1,9 @@
 package dev.marvin.config;
 
+import dev.marvin.authprovider.CustomAuthenticationProvider;
 import dev.marvin.filter.AuthenticationLoggingFilter;
 import dev.marvin.filter.RequestValidationFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -10,11 +12,11 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 @Configuration
-public class SecurityConfig {
-
+public class WebAuthConfig {
     private final CustomAuthenticationProvider authenticationProvider;
 
-    public SecurityConfig(CustomAuthenticationProvider authenticationProvider) {
+    @Autowired
+    public WebAuthConfig(CustomAuthenticationProvider authenticationProvider) {
         this.authenticationProvider = authenticationProvider;
     }
 
