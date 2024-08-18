@@ -1,31 +1,26 @@
 package dev.marvin.domain;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
 
-public class UserPrincipal implements UserDetails {
-    private final UserEntity userEntity;
-
-    public UserPrincipal(UserEntity userEntity) {
-        this.userEntity = userEntity;
-    }
-
+public class DummyUser implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(()-> userEntity.getAuthorities().toString());
+        return List.of(new SimpleGrantedAuthority("READ"));
     }
 
     @Override
     public String getPassword() {
-        return userEntity.getPassword();
+        return "password";
     }
 
     @Override
     public String getUsername() {
-        return userEntity.getUsername();
+        return "Marvin";
     }
 
     @Override

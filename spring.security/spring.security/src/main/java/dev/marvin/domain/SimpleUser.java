@@ -4,28 +4,29 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
 
-public class UserPrincipal implements UserDetails {
-    private final UserEntity userEntity;
+public class SimpleUser implements UserDetails {
+    private final String username;
+    private final String credentials;
 
-    public UserPrincipal(UserEntity userEntity) {
-        this.userEntity = userEntity;
+    public SimpleUser(String username, String credentials) {
+        this.username = username;
+        this.credentials = credentials;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(()-> userEntity.getAuthorities().toString());
+        return null;
     }
 
     @Override
     public String getPassword() {
-        return userEntity.getPassword();
+        return credentials;
     }
 
     @Override
     public String getUsername() {
-        return userEntity.getUsername();
+        return username;
     }
 
     @Override

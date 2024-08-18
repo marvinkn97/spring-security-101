@@ -6,11 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-//@Entity
 public class UserEntity implements UserDetails {
-
-//    @Id
-    private Integer id;
     private final String username;
     private final String password;
 
