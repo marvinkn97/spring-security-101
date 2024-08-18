@@ -12,17 +12,26 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 public class UserManagementConfig {
     @Bean
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         UserDetails user = User.builder()
                 .username("admin")
                 .password("password")
                 .roles("ADMIN")
                 .build();
-        return new InMemoryUserDetailsManager(user);
+
+        UserDetails user2 = User.withUsername("marvin")
+                .password("password")
+                .authorities("READ", "WRITE")
+                .accountExpired(false)
+                .credentialsExpired(false)
+                .disabled(false)
+                .build();
+
+        return new InMemoryUserDetailsManager(user, user2);
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }

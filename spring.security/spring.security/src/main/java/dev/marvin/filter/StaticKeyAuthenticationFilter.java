@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 
@@ -19,7 +20,7 @@ public class StaticKeyAuthenticationFilter extends HttpFilter {
 
         var authorizationHeader = request.getHeader("Authorization");
 
-        if (authorizationHeader == null || authorizationHeader.isBlank()) {
+        if (!StringUtils.hasText(authorizationHeader)) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }

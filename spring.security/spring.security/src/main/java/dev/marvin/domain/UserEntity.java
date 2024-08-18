@@ -1,12 +1,21 @@
 package dev.marvin.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
 
+@Entity
+@Table(name = "tbl_users")
 public class UserEntity implements UserDetails {
+    @Id
+    @GeneratedValue
+    private Integer id;
     private final String username;
     private final String password;
 
@@ -15,6 +24,9 @@ public class UserEntity implements UserDetails {
         this.password = password;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
     @Override
     public String getPassword() {
