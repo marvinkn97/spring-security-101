@@ -2,7 +2,7 @@ package dev.marvin.config;
 
 import dev.marvin.authprovider.CustomAuthenticationProvider;
 import dev.marvin.filter.AuthenticationLoggingFilter;
-import dev.marvin.filter.RequestValidationFilter;
+import dev.marvin.filter.HelloFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +25,8 @@ public class WebAuthConfig {
         return httpSecurity
                 .authenticationProvider(authenticationProvider)
                 .cors(Customizer.withDefaults())
-                .addFilterBefore(new RequestValidationFilter(), BasicAuthenticationFilter.class)
+                .addFilterBefore(new HelloFilter(), BasicAuthenticationFilter.class)
+                //.addFilterBefore(new RequestValidationFilter(), BasicAuthenticationFilter.class)
                 .addFilterAfter(new AuthenticationLoggingFilter(), BasicAuthenticationFilter.class)
                 .authorizeHttpRequests(request -> request.anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
