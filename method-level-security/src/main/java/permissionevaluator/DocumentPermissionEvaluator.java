@@ -11,7 +11,6 @@ import java.io.Serializable;
 public class DocumentPermissionEvaluator implements PermissionEvaluator {
     @Override
     public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {
-
         Document document = (Document) targetDomainObject;
         String p = (String) permission;
 
@@ -20,7 +19,6 @@ public class DocumentPermissionEvaluator implements PermissionEvaluator {
                 .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals(p));
 
         return readPermission || document.getOwner().equals(authentication.getName());
-
     }
 
     @Override
