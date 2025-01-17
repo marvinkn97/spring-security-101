@@ -7,9 +7,7 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import java.util.Collection;
 
 public class CustomAuthenticationToken extends JwtAuthenticationToken {
-
     private final String priority;
-
 
     public CustomAuthenticationToken(Jwt jwt, Collection<? extends GrantedAuthority> authorities, String priority) {
         super(jwt, authorities);
