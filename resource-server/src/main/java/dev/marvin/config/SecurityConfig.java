@@ -19,7 +19,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         httpSecurity.authorizeHttpRequests(c -> {
-            c.requestMatchers(HttpMethod.GET, "/users/status/check").hasAuthority("SCOPE_profile");
+            c.requestMatchers(HttpMethod.GET, "/users/status/check").hasAuthority("ROLE_USER");
             c.anyRequest().authenticated();
         });
 

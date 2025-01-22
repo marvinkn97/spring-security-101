@@ -1,0 +1,21 @@
+server:
+  port: 8761 # Port for the Eureka server
+
+spring:
+  application:
+    name: eureka-discovery # Name of the application
+
+eureka:
+  client:
+    register-with-eureka: false # Disable self-registration
+    fetch-registry: false       # Disable fetching registry, as this is a server
+  server:
+    instance:
+      hostname: localhost
+
+
+logging:
+  level:
+    com.netflix.eureka: DEBUG # Adjust the logging level for Eureka-specific logs
+
+
