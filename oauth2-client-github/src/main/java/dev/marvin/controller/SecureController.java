@@ -10,6 +10,5 @@ public class SecureController {
     @GetMapping("/")
     public String secure(OAuth2AuthenticationToken oAuth2AuthenticationToken){
         return "secure" + oAuth2AuthenticationToken;
-
     }
 }

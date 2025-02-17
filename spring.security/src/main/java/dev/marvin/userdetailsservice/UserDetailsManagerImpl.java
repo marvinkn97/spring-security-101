@@ -1,4 +1,4 @@
-package dev.marvin.service.userdetailsservice;
+package dev.marvin.userdetailsservice;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

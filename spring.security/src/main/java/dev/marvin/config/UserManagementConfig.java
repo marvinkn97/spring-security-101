@@ -1,6 +1,6 @@
 package dev.marvin.config;
 
-import dev.marvin.service.userdetailsservice.InMemoryUserDetailsService;
+import dev.marvin.userdetailsservice.InMemoryUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.User;
